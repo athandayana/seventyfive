@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seventyfive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- TOP BRAND HEADER -->
+    <header class="top-brand-header">
+      <span class="brand-title">seventyfive</span>
+    </header>
+
+    <!-- TOP NAVIGATION & CONTROLS -->
+    <div class="controls-bar">
+      <div class="day-nav">
+        <button class="day-btn" id="btnPrevDay">&larr;</button>
+        <span class="current-day-label" id="currentDayLabel">day 1 / 75</span>
+        <button class="day-btn" id="btnNextDay">&rarr;</button>
+      </div>
+
+      <div class="action-btns">
+        <span class="current-date-label" id="currentDateLabel">monday, july 27, 2026</span>
+        <button class="btn-complete-day" id="btnMarkDayComplete">complete day</button>
+      </div>
+    </div>
+
+    <!-- STATS OVERVIEW -->
+    <div class="stats-summary">
+      <div class="stat-item">
+        <span class="stat-val" id="statStreak">0 days</span>
+        <span class="stat-lbl">streak</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="statOverallProgress">0%</span>
+        <span class="stat-lbl">total progress</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="statWeeklyWorkouts">0 / 12</span>
+        <span class="stat-lbl">workouts this week so far</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="statWaterDrank">0.0 l</span>
+        <span class="stat-lbl">water today</span>
+      </div>
+    </div>
+
+    <!-- 1. WATER -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2>water intake</h2>
+        <p>target: 2.0 liters per day</p>
+      </div>
+
+      <div class="water-row">
+        <div>
+          <span class="water-amount" id="waterLitersText">0.0 l</span>
+          <span style="color:var(--text-secondary);" id="waterGoalText">/ 2.0 l</span>
+        </div>
+
+        <div class="water-buttons">
+          <button class="btn-add-water" data-amount="0.25">+0.25l</button>
+          <button class="btn-add-water" data-amount="0.50">+0.50l</button>
+          <button class="btn-add-water" data-amount="0.75">+0.75l</button>
+          <button class="btn-add-water" data-amount="1.00">+1.00l</button>
+          <button class="text-btn" id="btnResetWater">reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WORKOUTS -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2>workouts</h2>
+        <p>target: 12 workouts per week</p>
+      </div>
+
+      <div class="workout-list">
+        <div class="workout-item">
+          <span>workout 1</span>
+          <button class="simple-chk" id="chkWorkout1">✓</button>
+        </div>
+        <div class="workout-item">
+          <span>workout 2</span>
+          <button class="simple-chk" id="chkWorkout2">✓</button>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <span style="font-size:0.85rem; color:var(--text-secondary);">this week:</span>
+        <div class="weekly-pills" id="weeklyDaysGrid"></div>
+      </div>
+    </section>
+
+    <!-- 3. TOP 3 TASKS -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2>top three focus tasks</h2>
+        <p>three items to accomplish today</p>
+      </div>
+
+      <div class="task-list">
+        <div class="task-item" id="taskRow1">
+          <span class="task-num">1.</span>
+          <input type="text" class="task-input-simple" id="taskInput1" placeholder="first priority task...">
+          <button class="simple-chk" id="taskChk1">✓</button>
+        </div>
+        <div class="task-item" id="taskRow2">
+          <span class="task-num">2.</span>
+          <input type="text" class="task-input-simple" id="taskInput2" placeholder="second priority task...">
+          <button class="simple-chk" id="taskChk2">✓</button>
+        </div>
+        <div class="task-item" id="taskRow3">
+          <span class="task-num">3.</span>
+          <input type="text" class="task-input-simple" id="taskInput3" placeholder="third priority task...">
+          <button class="simple-chk" id="taskChk3">✓</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. READING TRACKER -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2>reading tracker</h2>
+        <p>book title and page count</p>
+      </div>
+
+      <div class="reading-inputs">
+        <div class="field-group">
+          <label for="bookTitleInput">book title</label>
+          <input type="text" id="bookTitleInput" class="task-input-simple" placeholder="title of book...">
+        </div>
+
+        <div class="input-row">
+          <div class="field-group">
+            <label for="bookCurrentPageInput">current page</label>
+            <input type="number" id="bookCurrentPageInput" class="task-input-simple" placeholder="45">
+          </div>
+          <div class="field-group">
+            <label for="bookTotalPagesInput">total pages</label>
+            <input type="number" id="bookTotalPagesInput" class="task-input-simple" placeholder="320">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+          <span style="font-size:0.9rem;" id="readingProgressText">page 0 of 0</span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:0.85rem; color:var(--text-secondary);">read 10+ pages today</span>
+            <button class="simple-chk" id="chkRead10Pages">✓</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 75 DAY MATRIX -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2>75 day overview</h2>
+      </div>
+
+      <div class="matrix-grid" id="matrix75Grid"></div>
+    </section>
+
+    <!-- BOTTOM RESET ACTION -->
+    <div class="bottom-reset-wrapper">
+      <button class="text-btn" id="btnResetChallenge">reset to day 1</button>
+    </div>
+
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="app.js"></script>
+</body>
+</html>
